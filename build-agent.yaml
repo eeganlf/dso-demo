@@ -38,7 +38,7 @@ spec:
       imagePullPolicy: Always
       env:
         - name: container
-          value: kube
+          value: docker
       command:
         - sleep
       args:
