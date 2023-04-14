@@ -47,7 +47,6 @@ spec:
         - name: jenkins-docker-cfg
           mountPath: /kaniko/.docker
 
-
   volumes:
     - name: m2
       hostPath:
