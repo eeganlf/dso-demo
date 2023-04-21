@@ -21,6 +21,13 @@ pipeline {
     stage('Static Analysis') {
       parallel {
 
+          stage('Unit Tests') {
+          steps {
+            container('maven') {
+              sh 'mvn test'
+            }
+          }
+        }
 
         
          stage('SCA') {
@@ -36,33 +43,18 @@ pipeline {
 
               }
 
-            }
-
-         }
-
-
-        stage('Unit Tests') {
-          steps {
-            container('maven') {
-              sh 'mvn test'
-            }
-          }
-        }
-
-      
-
-      }
-
-     
-post {
+              post {
            always {
              archiveArtifacts allowEmptyArchive: true, artifacts: 'target/dependency-check-report.html', fingerprint: true, onlyIfSuccessful: true
            // dependencyCheckPublisher pattern: 'report.xml'
            }
 }
 
+            }
 
+         }
 
+      }
     }
     stage('Package') {
       parallel {
@@ -79,6 +71,17 @@ post {
               sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/eeganlf/dsodemo'
             }
           }
+
+
+            post {
+           always {
+             archiveArtifacts allowEmptyArchive: true, artifacts: 'target/dependency-check-report.html', fingerprint: true, onlyIfSuccessful: true
+           // dependencyCheckPublisher pattern: 'report.xml'
+           }
+}
+
+
+
         }
 
 
