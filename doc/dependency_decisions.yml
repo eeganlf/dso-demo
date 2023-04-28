@@ -18,9 +18,15 @@
     :versions: []
     :when: 2020-05-31 15:26:48.756587000 Z
 - - :permit
+  - New BSD
+  - :who:
+    :why:
+    :versions: []
+    :when: 2020-09-29
+- - :permit
   - BSD License 3
   - :who: 
-    :why: 
+    :why:
     :versions: []
     :when: 2020-05-31 15:27:11.706253000 Z
 - - :permit
