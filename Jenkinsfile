@@ -44,27 +44,28 @@ pipeline {
                             }
                     }
                 }
+            
+            
+            stage('Generate SBOM') {
+          steps {
+            container('maven') {
+              sh 'mvn org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
+            }
+          }
+          post {
+            success {
+              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
+              archiveArtifacts allowEmptyArchive: true, artifacts: 'target/bom.xml', fingerprint: true, onlyIfSuccessful: true
+            }
+          }
+        }
 
-                stage('Generate SBOM') {
-                    steps {
-                        container('maven') {
-                            sh 'mvn org.cyclonedx:cyclonedx-maven-plugin:makeAggregateBom'
-                        }
-                    }
-                    post {
-                        success {
-                            // this is the line that chooses the sample spring app as the project to test. Uncomment to make it work again
-                            //   dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
-                            archiveArtifacts allowEmptyArchive: true, artifacts: 'target/bom.xml', fingerprint: true, onlyIfSuccessful: true
-                        }
-                    }
-                }
-
-                stage('OSS License Checker') {
-                    steps {
-                        container('licensefinder') {
-                            sh 'ls -al'
-                            sh '''#!/bin/bash --login
+            
+            stage('OSS License Checker') {
+          steps {
+            container('licensefinder') {
+              sh 'ls -al'
+              sh '''#!/bin/bash --login
                       /bin/bash --login
                       rvm use default
                       gem install license_finder
