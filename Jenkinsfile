@@ -75,7 +75,7 @@ pipeline {
                     }
                 }
 
-            end parallel
+            // end parallel
             }
         }
 
