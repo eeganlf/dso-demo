@@ -46,14 +46,14 @@
   - :who: 
     :why: 
     :versions:
-    - 1.2.6
+    - 1.2.9
     :when: 2023-05-17
 - - :approve
   - logback-classic
   - :who: 
     :why: 
     :versions:
-    - 1.2.6
+    - 1.2.9
     :when: 2023-05-17
 - - :approve
   - jakarta.xml.bind-api
