@@ -14,7 +14,7 @@ spec:
       tty: true
 
     - name: maven
-      image: maven:3.8.7-eclipse-temurin-11-alpine
+      image: maven
       command:
         - cat
       tty: true
