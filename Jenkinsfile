@@ -68,7 +68,7 @@ pipeline {
                         sh '''#!/bin/bash --login
                         /bin/bash --login
                         rvm get stable --auto-dotfiles
-                        rvm use ruby-3.1.1
+                        rvm use default
                         gem install license_finder
                         license_finder
                         '''
