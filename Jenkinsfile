@@ -70,7 +70,7 @@ pipeline {
                         echo $PATH
                         export PATH=/usr/share/rvm/gems/ruby-3.1.1/bin:$PATH
                         rvm get stable --auto-dotfiles
-                        rvm use ruby-3.1.1
+                        rvm use ruby-3.1.0
                         gem install license_finder
                         license_finder
                         '''
