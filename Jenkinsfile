@@ -28,22 +28,22 @@ pipeline {
                     }
                 }
 
-                // stage('SCA') {
-                //     steps {
-                //         container('maven') {
-                //             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                //                 sh 'mvn org.owasp:dependency-check-maven:check'
-                //             }
-                //         }
-                //     }
+                stage('SCA') {
+                    steps {
+                        container('maven') {
+                            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                                sh 'mvn org.owasp:dependency-check-maven:check'
+                            }
+                        }
+                    }
 
-                //     post {
-                //             always {
-                //                 archiveArtifacts allowEmptyArchive: true, artifacts: 'target/dependency-check-report.html', fingerprint: true, onlyIfSuccessful: true
-                //             // dependencyCheckPublisher pattern: 'report.xml'
-                //             }
-                //     }
-                // }
+                    post {
+                            always {
+                                archiveArtifacts allowEmptyArchive: true, artifacts: 'target/dependency-check-report.html', fingerprint: true, onlyIfSuccessful: true
+                            // dependencyCheckPublisher pattern: 'report.xml'
+                            }
+                    }
+                }
             
             
             stage('Generate SBOM') {
@@ -61,19 +61,19 @@ pipeline {
         }
 
             
-        //     stage('OSS License Checker') {
-        //   steps {
-        //     container('licensefinder') {
-        //       sh 'ls -al'
-        //       sh '''#!/bin/bash --login
-        //               /bin/bash --login
-        //               rvm use default
-        //               gem install license_finder
-        //               license_finder
-        //             '''
-        //                 }
-        //             }
-        //         }
+            stage('OSS License Checker') {
+          steps {
+            container('licensefinder') {
+              sh 'ls -al'
+              sh '''#!/bin/bash --login
+                      /bin/bash --login
+                      rvm use default
+                      gem install license_finder
+                      license_finder
+                    '''
+                        }
+                    }
+                }
 
             // end parallel
             }

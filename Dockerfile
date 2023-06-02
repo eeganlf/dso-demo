@@ -1,4 +1,4 @@
-FROM maven:3.6-jdk-8
+FROM maven:3.9.2-eclipse-temurin-17
 
 WORKDIR /app
 
