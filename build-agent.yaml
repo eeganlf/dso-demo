@@ -14,7 +14,7 @@ spec:
       tty: true
 
     - name: maven
-      image: maven:alpine
+      image: maven
       command:
         - cat
       tty: true
