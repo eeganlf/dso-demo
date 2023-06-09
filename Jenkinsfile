@@ -112,17 +112,16 @@ stage('Image Analysis') {
           steps {
             container('docker-tools') {
               sh 'dockle docker.io/eeganlf/dsodemo:multistage'
-              sh 'trivy image --exit-code 1 eeganlf/dso-demo:multistage'
             }
           }
         }
-        // stage('Image Scan') {
-        //   steps {
-        //     container('docker-tools') { 
-        //       sh 'trivy image --exit-code 1 eeganlf/dso-demo:multistage'
-        //       }
-        //   }
-        // }
+        stage('Image Scan') {
+          steps {
+            container('docker-tools') { 
+              sh 'trivy image --exit-code 1 eeganlf/dso-demo:multistage'
+              }
+          }
+        }
       }
     }
 
