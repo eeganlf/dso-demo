@@ -22,13 +22,13 @@ spec:
         - name: m2
           mountPath: /root/.m2/
     - name: docker-tools
-      image: rmkanda/docker-tools:latest
+      image: ghcr.io/aquasecurity/trivy-operator:0.14.0
       command:
         - cat
       tty: true
       volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-sock
+        # - mountPath: /var/run/docker.sock
+        #   name: docker-sock
         - mountPath: /tmp/trivycache/
           name: trivycache
     - name: trufflehog
@@ -59,9 +59,9 @@ spec:
     - name: m2
       hostPath:
         path: /tmp/.m2/
-    - name: docker-sock
-      hostPath:
-        path: /var/run/docker.sock
+    # - name: docker-sock
+    #   hostPath:
+    #     path: /var/run/docker.sock
     - name: trivycache
       hostPath:
         path: /tmp/trivycache/
