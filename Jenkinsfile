@@ -6,6 +6,12 @@ pipeline {
             idleMinutes 1
         }
     }
+
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
+    }
+
+
     stages {
         stage('Build') {
             parallel {
@@ -118,6 +124,7 @@ stage('Image Analysis') {
         stage('Image Scan') {
           steps {
             container('docker-tools') { 
+              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
               sh 'trivy image --exit-code 1 eeganlf/dso-demo:multistage'
               }
           }
