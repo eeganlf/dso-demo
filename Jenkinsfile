@@ -118,7 +118,7 @@ stage('Image Analysis') {
         stage('Image Scan') {
           steps {
             container('docker-tools') { 
-              sh 'sudo trivy image --exit-code 1 eeganlf/dso-demo:multistage'
+              sh 'trivy image --exit-code 1 eeganlf/dso-demo:multistage'
               }
           }
         }
