@@ -124,7 +124,7 @@ stage('Image Analysis') {
         stage('Image Scan') {
           steps {
             container('docker-tools') { 
-            //   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+
               sh 'trivy image --exit-code 1 eeganlf/dsodemo:multistage'
             
               }
