@@ -96,7 +96,7 @@ pipeline {
                 stage('OCI BnP') {
                     steps {
                         container('kaniko') {
-                            sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/eeganlf/dsodemo:multistage'
+                            sh '/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/eeganlf/dsodemo'
                         }
                     }
 
@@ -117,7 +117,7 @@ stage('Image Analysis') {
         stage('Image Linting') {
           steps {
             container('docker-tools') {
-              sh 'dockle docker.io/eeganlf/dsodemo:multistage'
+              sh 'dockle docker.io/eeganlf/dsodemo'
             }
           }
         }
@@ -125,7 +125,7 @@ stage('Image Analysis') {
           steps {
             container('docker-tools') { 
 
-              sh 'trivy image --exit-code 1 eeganlf/dsodemo:multistage'
+              sh 'trivy image --exit-code 1 eeganlf/dsodemo'
             
               }
           }
