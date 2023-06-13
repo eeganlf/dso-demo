@@ -2,6 +2,7 @@ pipeline {
 
 environment { 
     ARGO_SERVER = '35.222.46.18:32100' 
+    DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
   }
 
 
@@ -13,9 +14,6 @@ environment {
         }
     }
 
-    environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
-    }
 
 
     stages {
