@@ -2,7 +2,8 @@ pipeline {
 
 environment { 
     ARGO_SERVER = '35.222.46.18:32100' 
-    DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
+    DEV_URL = 'http://35.222.46.18:30080/'
+    // DOCKERHUB_CREDENTIALS=credentials('dockerhublogin')
   }
 
 
