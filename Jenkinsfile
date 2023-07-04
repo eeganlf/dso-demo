@@ -130,7 +130,7 @@ stage('Image Analysis') {
           steps {
             container('docker-tools') { 
 
-              sh 'trivy image --exit-code 1 eeganlf/dsodemo'
+              sh 'trivy image --timeout 10m --exit-code 1 eeganlf/dsodemo'
             
               }
           }
