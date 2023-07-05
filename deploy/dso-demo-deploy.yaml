@@ -22,7 +22,7 @@ spec:
       automountServiceAccountToken: false
       serviceAccountName: dso-demo
       containers:
-      - image: xxxx/dso-demo
+      - image: eeganlf/dso-demo
         name: dso-demo
         ports:
         - containerPort: 8080
