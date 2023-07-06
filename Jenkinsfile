@@ -140,8 +140,8 @@ stage('Image Analysis') {
 
  stage('Scan k8s Deploy Code') {
     steps {
-      container('kubesec') {
-            sh 'kubesec scan --kubernetes-version 1.25.3 deploy/dso-demo-deploy.yaml'
+      container('docker-tools') {
+            sh 'kubesec scan deploy/dso-demo-deploy.yaml'
       }
     }
   }
