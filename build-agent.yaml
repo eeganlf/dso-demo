@@ -5,7 +5,6 @@ metadata:
     app: spring-build-ci
 spec:
   containers:
-
     - name: slscan
       image: shiftleft/sast-scan:v2.1.2
       imagePullPolicy: Always
