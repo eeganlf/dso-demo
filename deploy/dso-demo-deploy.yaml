@@ -28,7 +28,7 @@ spec:
         - containerPort: 8080
         securityContext:
           seccompProfile:
-            type: "runtime/default"
+            type: RuntimeDefault
           capabilities:
             drop:
               - ALL
