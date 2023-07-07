@@ -30,12 +30,6 @@ spec:
           name: docker-sock
         - mountPath: /tmp/trivycache/
           name: trivycache
-    - name: kubesec
-      image: kubesec/kubesec:v2.13.0
-      imagePullPolicy: Always
-      command:
-        - cat
-      tty: true
     - name: trufflehog
       image: rmkanda/trufflehog
       command:
