@@ -31,7 +31,7 @@ spec:
         requests:
           memory: "50Mi"
         limits:
-          memory: "1000Mi"
+          memory: "3000Mi"
     - name: docker-tools
       image: rmkanda/docker-tools:latest
       command:
