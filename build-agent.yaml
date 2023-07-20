@@ -11,7 +11,14 @@ spec:
       command:
         - cat
       tty: true
-
+      resources:
+        requests:
+          memory: "50Mi"
+        limits:
+          memory: "100Mi"
+    
+    
+    
     - name: maven
       image: maven
       command:
@@ -20,6 +27,11 @@ spec:
       volumeMounts:
         - name: m2
           mountPath: /root/.m2/
+      resources:
+        requests:
+          memory: "50Mi"
+        limits:
+          memory: "100Mi"
     - name: docker-tools
       image: rmkanda/docker-tools:latest
       command:
@@ -30,11 +42,23 @@ spec:
           name: docker-sock
         - mountPath: /tmp/trivycache/
           name: trivycache
+
+      resources:
+        requests:
+          memory: "50Mi"
+        limits:
+          memory: "100Mi"
+
     - name: trufflehog
       image: rmkanda/trufflehog
       command:
         - cat
       tty: true
+      resources:
+        requests:
+          memory: "50Mi"
+        limits:
+          memory: "100Mi"
     - name: licensefinder
       image: licensefinder/license_finder
       command:
