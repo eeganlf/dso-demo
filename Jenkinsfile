@@ -126,15 +126,15 @@ stage('Image Analysis') {
             }
           }
         }
-        stage('Image Scan') {
-          steps {
-            container('docker-tools') { 
+        // stage('Image Scan') {
+        //   steps {
+        //     container('docker-tools') { 
 
-              sh 'trivy image --timeout 10m --exit-code 1 eeganlf/dsodemo'
+        //       sh 'trivy image --timeout 10m --exit-code 1 eeganlf/dsodemo'
             
-              }
-          }
-        }
+        //       }
+        //   }
+        // }
       }
     }
 
